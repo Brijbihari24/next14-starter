@@ -1,35 +1,63 @@
 import Link from "next/link"
+import styles from "./links.module.css"
+import NavLink from "./navLink/NavLink"
+import { useState } from "react"
+
+
+const links = [
+    {
+        title: "Home",
+        path: "/",
+    },
+    {
+        title: "About",
+        path: "/about",
+    },
+    {
+        title: "Contact",
+        path: "/contact",
+    },
+    {
+        title: "Blog",
+        path: "/blog",
+    },
+]
+
+// temporary 
+const Session = true;
+const isAdmin = true;
 
 const Links = () => {
 
-    const links = [
-        {
-            title: "Home",
-            path: "/",
-        },
-        {
-            title: "About",
-            path: "/about",
-        },
-        {
-            title: "Contact",
-            path: "/contact",
-        },
-        {
-            title: "Blog",
-            path: "/blog",
-        },
-    ]
-
+    const [open, setOpen] = useState(true)
     return (
-        <div>
+        <div className={styles.links}>
             {
-                links && links.map((link) => {
+                links && links.map((link, index) => {
                     return (
-                        <Link href={link.path}>{link.title}</Link>
+                        <NavLink item={link} key={link.title} />
                     )
                 })
             }
+            {
+                Session ? (
+                    <>
+                        {
+                            isAdmin && (
+                                <NavLink item={{ title: "Admin", path: "/admin" }} />
+                            )
+                        }
+                        <button className={styles.logout}>Logout</button>
+                    </>
+                ) : (
+                    <NavLink item={{ title: "Login", path: "/login" }} />
+                )
+            }
+
+
+
+
+
         </div>
     )
 }

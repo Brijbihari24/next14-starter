@@ -1,0 +1,35 @@
+:root{
+    --bg:#0d0c22;
+    --bgsoft:#2b2d42;
+    --text:white;
+    --textsoft:#e5e5e5;
+    --btn:#3673fb;
+}
+
+body{
+    background: var(--bg);
+    color: var(--text);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.container{
+    /* background-color: rebeccapurple; */
+    width: 1080px;
+    margin: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
